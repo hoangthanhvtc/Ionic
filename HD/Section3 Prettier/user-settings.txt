@@ -1,0 +1,15 @@
+{
+    // Set the default
+    "editor.formatOnSave": true,
+    // Enable per-language
+    "[javascript]": {
+        "editor.formatOnSave": true
+    },
+    "[typescript]": {
+        "editor.formatOnSave": true
+    },
+    "eslint.autoFixOnSave": true,
+    "eslint.alwaysShowStatus": true,
+    "prettier.eslintIntegration": true,
+    "prettier.singleQuote": true
+}
