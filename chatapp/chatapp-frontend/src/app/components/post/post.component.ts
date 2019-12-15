@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 import * as moment from 'moment';
 import io from 'socket.io-client';
+import _ from 'lodash';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-post',
@@ -11,11 +13,13 @@ import io from 'socket.io-client';
 export class PostComponent implements OnInit {
   posts = [];
   socket: any;
-  constructor(private postService: PostService) {
+  user: any;
+  constructor(private postService: PostService, private tokenService: TokenService) {
     this.socket = io('http://localhost:3000');
   }
 
   ngOnInit() {
+    this.user = this.tokenService.GetPayload();
     this.AllPosts();
     this.socket.on('refreshPage', data => {
       this.AllPosts();
@@ -35,6 +39,10 @@ export class PostComponent implements OnInit {
       },
       err => console.log(err)
     );
+  }
+
+  CheckInLikesArray(arr, username) {
+    return _.some(arr, { username: username });
   }
 
   TimeFromNow(time) {
