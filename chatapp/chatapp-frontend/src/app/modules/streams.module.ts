@@ -9,11 +9,19 @@ import { PostformComponent } from '../components/postform/postform.component';
 import { PostComponent } from '../components/post/post.component';
 import { PostService } from '../services/post.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommentsComponent } from '../components/comments/comments.component';
 
 @NgModule({
-  declarations: [StreamsComponent, ToolbarComponent, SideComponent, PostformComponent, PostComponent],
+  declarations: [
+    StreamsComponent,
+    ToolbarComponent,
+    SideComponent,
+    PostformComponent,
+    PostComponent,
+    CommentsComponent
+  ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
-  exports: [StreamsComponent, ToolbarComponent],
+  exports: [StreamsComponent, ToolbarComponent, CommentsComponent],
   providers: [TokenService, PostService]
 })
 export class StreamsModule {}

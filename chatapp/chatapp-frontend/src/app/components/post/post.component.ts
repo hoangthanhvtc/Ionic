@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import io from 'socket.io-client';
 import _ from 'lodash';
 import { TokenService } from 'src/app/services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -14,7 +15,7 @@ export class PostComponent implements OnInit {
   posts = [];
   socket: any;
   user: any;
-  constructor(private postService: PostService, private tokenService: TokenService) {
+  constructor(private postService: PostService, private tokenService: TokenService, private router: Router) {
     this.socket = io('http://localhost:3000');
   }
 
@@ -49,5 +50,9 @@ export class PostComponent implements OnInit {
     return moment(time)
       .locale('vi')
       .fromNow();
+  }
+
+  OnCommentBox(post) {
+    this.router.navigate(['post', post._id]);
   }
 }
