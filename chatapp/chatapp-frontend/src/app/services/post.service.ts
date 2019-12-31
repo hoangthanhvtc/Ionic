@@ -21,4 +21,11 @@ export class PostService {
   addLike(body): Observable<any> {
     return this.http.post(`${BackendURL}/post/add-like`, body);
   }
+
+  addComment(postId, comment): Observable<any> {
+    return this.http.post(`${BackendURL}/post/add-comment`, {
+      postId,
+      comment
+    });
+  }
 }

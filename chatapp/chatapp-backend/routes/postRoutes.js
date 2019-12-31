@@ -12,4 +12,7 @@ router
 router
   .route("/post/add-like")
   .post(AuthHelper.VerifyToken, PostController.AddLike);
+router
+  .route("/post/add-comment")
+  .post(AuthHelper.VerifyToken, PostController.AddComment);
 module.exports = router;
